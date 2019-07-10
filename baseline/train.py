@@ -28,6 +28,8 @@ def main():
             # during training, randomly flip the training images
             # and ground-truth for data augmentation
             transforms.append(T.RandomHorizontalFlip(0.5))
+            transforms.append(torchvision.transforms.ColorJitter(contrast=.3))
+            transforms.append(torchvision.transforms.ColorJitter(brightness=.4))
         return T.Compose(transforms)
 
     backbone = torchvision.models.mobilenet_v2(pretrained=True).features
@@ -61,7 +63,7 @@ def main():
     dataset_val = torch.utils.data.Subset(dataset_val, indices[-100:])
 
     # define training and validation data loaders
-    data_loader = torch.cat utils.data.DataLoader(
+    data_loader = torch.utils.data.DataLoader(
         dataset, batch_size=2, shuffle=True, num_workers=0,
         collate_fn=utils.collate_fn)
 
