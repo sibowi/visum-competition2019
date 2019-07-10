@@ -83,7 +83,7 @@ def main():
 
     for epoch in range(args['epochs']):
         # train for one epoch, printing every 10 iterations
-        epoch_loss = train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
+        epoch_loss = train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=nvid)
         # update the learning rate
         lr_scheduler.step()
         # evaluate on the test dataset

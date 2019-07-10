@@ -61,7 +61,7 @@ def main():
     dataset_val = torch.utils.data.Subset(dataset_val, indices[-100:])
 
     # define training and validation data loaders
-    data_loader = torch.utils.data.DataLoader(
+    data_loader = torch.cat utils.data.DataLoader(
         dataset, batch_size=2, shuffle=True, num_workers=0,
         collate_fn=utils.collate_fn)
 
@@ -83,7 +83,7 @@ def main():
 
     for epoch in range(args['epochs']):
         # train for one epoch, printing every 10 iterations
-        epoch_loss = train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
+        epoch_loss = train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=nvid)
         # update the learning rate
         lr_scheduler.step()
         # evaluate on the test dataset
